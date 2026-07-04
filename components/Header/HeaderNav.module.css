@@ -1,0 +1,16 @@
+.header_navigation {
+  display: flex;
+  flex-direction: row;
+  height: 24px;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+}
+
+a.nav_item {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+}

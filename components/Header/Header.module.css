@@ -1,0 +1,29 @@
+.header {
+  border-bottom: 1px solid var(--badges);
+  width: 1440px;
+  height: 72px;
+  background: var(--inputs);
+}
+
+.header_container {
+  padding: 24px 64px;
+  display: flex;
+  flex-direction: row;
+  gap: 450px;
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: opacity 200ms ease;
+}
+
+.logo {
+  display: block;
+  height: 16px;
+  width: 136px;
+  object-fit: contain;
+}
