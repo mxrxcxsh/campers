@@ -1,7 +1,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 48px;
   border-radius: 20px;
   padding: 24px;
   width: 360px;
@@ -12,19 +12,33 @@
 .info {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 40px;
+  width: 312px;
+  height: 616px;
+}
+
+.radio_block {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 153px;
+  height: 488px;
 }
 
 .btn_container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
+  width: 312px;
+  height: 128px;
 }
 
 .block {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 312px;
+  height: 88px;
 }
 
 .label {
@@ -36,25 +50,34 @@
 }
 
 .locationField {
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
   border-radius: 12px;
   padding: 18px 218px 18px 20px;
   background: var(--white);
+  width: 312px;
 }
 
 .locationInput {
   border: none;
   outline: none;
   background: transparent;
-  width: 59px;
-  height: 24px;
+  width: 40px;
+  height: 20px;
+  font-family: var(--font-family);
+  font-weight: 400;
   font-size: 16px;
-  color: #1a1a1a;
+  line-height: 150%;
+  color: var(--main);
 }
 .input_icon {
-  display: block;
+  display: inline-block;
   width: 20px;
   height: 20px;
   object-fit: contain;
+  stroke: currentColor;
+  fill: currentColor;
 }
 
 .title {
@@ -68,31 +91,36 @@
 .fieldset {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   border: none;
   padding: 0;
   margin: 0;
 }
 
 .legend {
-  font-size: 14px;
-  color: #888;
-  margin-bottom: 4px;
-  padding: 0;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--gray);
+  margin-bottom: 8px;
 }
 
 .radioLabel {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  font-family: var(--font-family);
+  font-weight: 400;
   font-size: 16px;
-  color: #333;
+  line-height: 150%;
+  color: var(--main);
   cursor: pointer;
 }
 
 .radio {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   accent-color: #4a5a52;
   cursor: pointer;
 }
@@ -100,13 +128,20 @@
 .searchButton {
   padding: 14px;
   border: none;
-  border-radius: 999px;
-  background-color: #8fa08f;
-  color: #fff;
+  background: var(--grey-green);
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color: var(--white);
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  transition: opacity 0.2s;
+  border-radius: 200px;
+  padding: 16px 60px;
+  width: 312px;
+  height: 56px;
 }
 
 .searchButton:hover {
@@ -117,17 +152,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 14px;
-  border: 1px solid #e5e5e5;
-  border-radius: 999px;
-  background-color: #fff;
-  color: #333;
+  gap: 5px;
+  border: 1px solid var(--gray-light);
+  background: var(--white);
+  font-family: var(--font-family);
+  font-weight: 500;
   font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color: var(--main);
   cursor: pointer;
-  transition: background-color 0.2s;
+  border-radius: 200px;
+  padding: 15px 60px;
+  width: 312px;
+  height: 56px;
 }
 
 .clearButton:hover {
   background-color: #f9f9f9;
+}
+
+.clear_icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  stroke-width: 0;
+  object-fit: contain;
+  stroke: currentColor;
+  fill: currentColor;
 }

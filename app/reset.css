@@ -27,8 +27,9 @@ a {
 img,
 svg {
   display: block;
-  max-width: 100%;
-  /* height: auto; */
+  width: auto;
+  height: auto;
+  margin: 0;
 }
 
 input,
@@ -41,7 +42,8 @@ select {
 
 html,
 body {
-  /* height: 100%; */
+  height: 100%;
+  width: 100%;
   scroll-behavior: smooth;
   white-space: nowrap;
 }

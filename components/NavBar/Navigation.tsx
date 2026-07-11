@@ -35,9 +35,8 @@ export default function Navigation() {
             <div className={css.block}>
               <label className={css.label}>Location</label>
               <div className={css.locationField}>
-                <svg>
+                <svg className={css.input_icon}>
                   <use
-                    className={css.input_icon}
                     width="20"
                     height="20"
                     href="/icons/icons.svg/#icon-map"
@@ -51,55 +50,57 @@ export default function Navigation() {
               </div>
             </div>
 
-            <h2 className={css.title}>Filters</h2>
+            <div className={css.radio_block}>
+              <h2 className={css.title}>Filters</h2>
 
-            {/* Camper form */}
-            <fieldset className={css.fieldset}>
-              <legend className={css.legend}>Camper form</legend>
-              {camperForms.map(option => (
-                <label key={option} className={css.radioLabel}>
-                  <Field
-                    type="radio"
-                    name="camperForm"
-                    value={option}
-                    className={css.radio}
-                  />
-                  {option}
-                </label>
-              ))}
-            </fieldset>
+              {/* Camper form */}
+              <fieldset className={css.fieldset}>
+                <legend className={css.legend}>Camper form</legend>
+                {camperForms.map(option => (
+                  <label key={option} className={css.radioLabel}>
+                    <Field
+                      type="radio"
+                      name="camperForm"
+                      value={option}
+                      className={css.radio}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </fieldset>
 
-            {/* Engine */}
-            <fieldset className={css.fieldset}>
-              <legend className={css.legend}>Engine</legend>
-              {engines.map(option => (
-                <label key={option} className={css.radioLabel}>
-                  <Field
-                    type="radio"
-                    name="engine"
-                    value={option}
-                    className={css.radio}
-                  />
-                  {option}
-                </label>
-              ))}
-            </fieldset>
+              {/* Engine */}
+              <fieldset className={css.fieldset}>
+                <legend className={css.legend}>Engine</legend>
+                {engines.map(option => (
+                  <label key={option} className={css.radioLabel}>
+                    <Field
+                      type="radio"
+                      name="engine"
+                      value={option}
+                      className={css.radio}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </fieldset>
 
-            {/* Transmission */}
-            <fieldset className={css.fieldset}>
-              <legend className={css.legend}>Transmission</legend>
-              {transmissions.map(option => (
-                <label key={option} className={css.radioLabel}>
-                  <Field
-                    type="radio"
-                    name="transmission"
-                    value={option}
-                    className={css.radio}
-                  />
-                  {option}
-                </label>
-              ))}
-            </fieldset>
+              {/* Transmission */}
+              <fieldset className={css.fieldset}>
+                <legend className={css.legend}>Transmission</legend>
+                {transmissions.map(option => (
+                  <label key={option} className={css.radioLabel}>
+                    <Field
+                      type="radio"
+                      name="transmission"
+                      value={option}
+                      className={css.radio}
+                    />
+                    {option}
+                  </label>
+                ))}
+              </fieldset>
+            </div>
           </div>
 
           {/* Buttons */}
@@ -113,7 +114,13 @@ export default function Navigation() {
               onClick={() => resetForm()}
               className={css.clearButton}
             >
-              {/* сюда вставьте свою иконку крестика */}
+              <svg className={css.clear_icon}>
+                <use
+                  width="24"
+                  height="24"
+                  href="/icons/icons.svg/#icon-close"
+                ></use>
+              </svg>
               Clear filters
             </button>
           </div>
