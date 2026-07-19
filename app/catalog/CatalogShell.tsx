@@ -1,5 +1,7 @@
 'use client';
 
+import { Suspense } from 'react';
+
 import Navigation from '@/components/NavBar/Navigation';
 import { usePathname } from 'next/navigation';
 import css from './CatalogLayout.module.css';
@@ -16,7 +18,11 @@ export default function CatalogShell({
     <div
       className={`${css.wrapper} ${isDetailsPage ? css.detailsWrapper : ''}`}
     >
-      {!isDetailsPage && <Navigation />}
+      {!isDetailsPage && (
+        <Suspense fallback={null}>
+          <Navigation />
+        </Suspense>
+      )}
       <section className={isDetailsPage ? css.detailsSection : undefined}>
         {children}
       </section>
