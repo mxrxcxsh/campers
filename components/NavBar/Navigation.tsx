@@ -1,6 +1,7 @@
 'use client';
 
 import { Formik, Form, Field } from 'formik';
+import { useRouter, useSearchParams } from 'next/navigation';
 import css from './Navigation.module.css';
 
 interface FilterValues {
@@ -22,12 +23,38 @@ const engines = ['Diesel', 'Petrol', 'Hybrid', 'Electric'];
 const transmissions = ['Automatic', 'Manual'];
 
 export default function Navigation() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const currentValues: FilterValues = {
+    location: searchParams.get('location') ?? initialValues.location,
+    camperForm: searchParams.get('camperForm') ?? initialValues.camperForm,
+    engine: searchParams.get('engine') ?? initialValues.engine,
+    transmission:
+      searchParams.get('transmission') ?? initialValues.transmission,
+  };
+
+  const handleSubmit = (values: FilterValues) => {
+    const params = new URLSearchParams();
+
+    Object.entries(values).forEach(([key, value]) => {
+      const trimmedValue = value.trim();
+
+      if (trimmedValue) {
+        params.set(key, trimmedValue);
+      }
+    });
+
+    const queryString = params.toString();
+
+    router.push(queryString ? `/catalog?${queryString}` : '/catalog');
+  };
+
   return (
     <Formik
-      initialValues={initialValues}
-      onSubmit={values => {
-        console.log('Search filters:', values);
-      }}
+      enableReinitialize
+      initialValues={currentValues}
+      onSubmit={handleSubmit}
     >
       {({ resetForm }) => (
         <Form className={css.form}>
@@ -111,7 +138,10 @@ export default function Navigation() {
 
             <button
               type="button"
-              onClick={() => resetForm()}
+              onClick={() => {
+                resetForm({ values: initialValues });
+                router.push('/catalog');
+              }}
               className={css.clearButton}
             >
               <svg className={css.clear_icon}>

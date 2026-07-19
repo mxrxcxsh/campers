@@ -4,3 +4,24 @@
   gap: 64px;
   padding: 48px 64px;
 }
+
+.detailsWrapper {
+  display: block;
+  padding: 44px 0 72px;
+}
+
+.detailsSection {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .detailsWrapper {
+    padding: 40px 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .detailsWrapper {
+    padding: 32px 20px;
+  }
+}

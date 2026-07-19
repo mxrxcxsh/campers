@@ -1,0 +1,71 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(16, 24, 40, 0.08);
+}
+
+.card {
+  display: flex;
+  width: min(464px, calc(100vw - 48px));
+  min-height: 194px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 40px 48px 36px;
+  background: var(--white);
+  box-shadow: 0 18px 60px rgba(16, 24, 40, 0.08);
+  text-align: center;
+}
+
+.spinner {
+  position: relative;
+  display: block;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 28px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    var(--green-hover) 0deg 74deg,
+    var(--inputs) 74deg 360deg
+  );
+  animation: spin 900ms linear infinite;
+}
+
+.spinner::after {
+  position: absolute;
+  inset: 5px;
+  border-radius: inherit;
+  background: var(--white);
+  content: '';
+}
+
+.title {
+  margin: 0 0 14px;
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 120%;
+  color: var(--main);
+}
+
+.text {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 143%;
+  color: var(--main);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

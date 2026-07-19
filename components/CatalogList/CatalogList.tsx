@@ -1,11 +1,17 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import NotFoundPage from '@/components/NotFoundPage/NotFoundPage';
 import type { Camper } from '@/lib/campersApi';
 import css from './CatalogList.module.css';
 
 interface CatalogListProps {
   campers: Camper[];
 }
+
+const LOAD_MORE_STEP = 5;
 
 const amenityLabels: Record<string, string> = {
   ac: 'AC',
@@ -34,20 +40,27 @@ const formatFeature = (feature: string) =>
     .join(' ');
 
 const CatalogList = ({ campers }: CatalogListProps) => {
+  const [visibleCount, setVisibleCount] = useState(LOAD_MORE_STEP);
+
   if (campers.length === 0) {
-    return (
-      <div className={css.catalog_container}>
-        <p className={css.empty}>No campers found.</p>
-      </div>
-    );
+    return <NotFoundPage />;
   }
+
+  const visibleCampers = campers.slice(0, visibleCount);
+  const hasMoreCampers = visibleCount < campers.length;
+
+  const handleLoadMore = () => {
+    setVisibleCount(currentCount =>
+      Math.min(currentCount + LOAD_MORE_STEP, campers.length)
+    );
+  };
 
   return (
     <div className={css.catalog_container}>
-      {campers.map((camper, index) => {
+      {visibleCampers.map((camper, index) => {
         const features = [
-          camper.transmission,
           camper.engine,
+          camper.transmission,
           camper.form,
         ].slice(0, 6);
 
@@ -96,6 +109,16 @@ const CatalogList = ({ campers }: CatalogListProps) => {
                         <use href="/icons/icons.svg/#icon-petrol" />
                       </svg>
                     )}
+                    {feature === camper.transmission && (
+                      <svg className={css.featureIcon} aria-hidden="true">
+                        <use href="/icons/icons.svg/#icon-gear" />
+                      </svg>
+                    )}
+                    {feature === camper.form && (
+                      <svg className={css.featureIcon} aria-hidden="true">
+                        <use href="/icons/icons.svg/#icon-camper-form" />
+                      </svg>
+                    )}
                     {formatFeature(feature)}
                   </li>
                 ))}
@@ -108,6 +131,18 @@ const CatalogList = ({ campers }: CatalogListProps) => {
           </article>
         );
       })}
+
+      {hasMoreCampers && (
+        <div className={css.loadMoreWrap}>
+          <button
+            className={css.loadMoreButton}
+            onClick={handleLoadMore}
+            type="button"
+          >
+            Load more
+          </button>
+        </div>
+      )}
     </div>
   );
 };

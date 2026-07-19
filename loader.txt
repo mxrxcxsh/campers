@@ -1,0 +1,85 @@
+<!-- Loader markup and styles matching the catalog screenshot. -->
+<div class="loader-overlay" role="status" aria-live="polite">
+  <div class="loader-card">
+    <span class="loader-spinner" aria-hidden="true"></span>
+    <p class="loader-title">Loading tracks...</p>
+    <p class="loader-text">
+      Please wait while we fetch the best<br />
+      travel trucks for you
+    </p>
+  </div>
+</div>
+
+<style>
+  .loader-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(16, 24, 40, 0.08);
+  }
+
+  .loader-card {
+    display: flex;
+    width: min(464px, calc(100vw - 48px));
+    min-height: 194px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 40px 48px 36px;
+    background: #fff;
+    box-shadow: 0 18px 60px rgba(16, 24, 40, 0.08);
+    text-align: center;
+  }
+
+  .loader-spinner {
+    position: relative;
+    display: block;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 28px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      #6d7b75 0deg 74deg,
+      #f7f7f7 74deg 360deg
+    );
+    animation: loader-spin 900ms linear infinite;
+  }
+
+  .loader-spinner::after {
+    position: absolute;
+    inset: 5px;
+    border-radius: inherit;
+    background: #fff;
+    content: '';
+  }
+
+  .loader-title {
+    margin: 0 0 14px;
+    font-family: Inter, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 120%;
+    color: #101828;
+  }
+
+  .loader-text {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 143%;
+    color: #101828;
+  }
+
+  @keyframes loader-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
